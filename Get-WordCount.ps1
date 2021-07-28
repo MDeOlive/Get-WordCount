@@ -29,4 +29,5 @@ Foreach ($word in $unique){
 
 }
 
+#printing the results in order of most used to least used
 $wordlist | Sort-Object Count -Descending
