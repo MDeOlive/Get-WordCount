@@ -21,7 +21,7 @@ $wordlist = @()
 
 Foreach ($word in $unique){
 
-    # creating a custom object with "Word" and "Count" properties. The count is calculated right where the count value is assigned
+    # creating a custom object with "Word" and "Count" properties. The count is calculated where the count value is assigned
     $wordcount = New-Object -TypeName psobject
     $wordcount | Add-Member -MemberType NoteProperty -Name Word -Value $word
     $wordcount | Add-Member -MemberType NoteProperty -Name Count -Value ($file | Where-Object {$_ -eq $word}).count
