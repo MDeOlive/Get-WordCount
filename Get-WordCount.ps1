@@ -1,11 +1,13 @@
-﻿Param(
+Param(
     [parameter(Mandatory = $True)][System.IO.FileInfo]$Path
 )
 
-$file = get-content -Path $Path
+$fileContent = get-content -Path $Path
+# Count the number of lines in the file
+$lineCount = $fileContent.Count
 
 # making everything lowercase for easier comparison
-$file = $file.tolower()
+$file = $fileContent.tolower()
 
 # -replace parameter removes any characters that aren't letters, space characters, or apostrophes
 # -split splits the string where the delimiter is one or more spaces
@@ -29,5 +31,8 @@ Foreach ($word in $unique){
 
 }
 
-#printing the results in order of most used to least used
+# printing the line count
+Write-Output "Total Lines: $lineCount"
+
+# printing the results in order of most used to least used
 $wordlist | Sort-Object Count -Descending
